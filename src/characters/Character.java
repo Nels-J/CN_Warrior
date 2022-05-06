@@ -1,6 +1,6 @@
 package characters;
 
-public class Character {  // ASK make it abstract could be a good idea i guess
+public abstract class Character {  //ASK strange? make it abstract only require the key word abstract here i guess
     // attributes declarations
     private String name;
     private String picture; //TODO refactor to store a picture
@@ -60,4 +60,3 @@ public class Character {  // ASK make it abstract could be a good idea i guess
                 ", attackLevel=" + attackLevel;
     }
 }
-

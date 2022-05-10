@@ -1,25 +1,45 @@
 package gamestuff;
 
+import characters.Magician;
+import characters.Warrior;
+
 import java.util.Scanner;
 
 public class Menu {
     public Menu() {
-        //TODO 1st Menu ask Do you want a new character ? or Do you want to Quit the game
         try {
             boolean quitOrNew;
             Scanner clavier = new Scanner(System.in);
             System.out.println(" (0) - Quit / (1) - New Player");
             quitOrNew = clavier.nextInt() == 1; //Pour connaitre les exceptions a Catch voir le chapitre Throws de la methode nextInt dans la doc
-            clavier.close();
+            if (quitOrNew) {
+                try {
+                    boolean selectedHero;
+                    System.out.println(" Select your new hero -> (0) - Magician / (1) - Warrior");
+                    selectedHero = clavier.nextInt() == 1;
+                    System.out.println("selectedHero :" + selectedHero);
+                    String heroName;
+                    System.out.println(" Your hero name please: ");
+                    heroName = clavier.next();
+                    clavier.close();
 
-            /*TODO IF New Player
-            * INSTANCIATION nouveau personnage: Guerrier/Magicien
-            * PUIS demande la saisie des informations adequates à la création // nom du personnage
-            * En cours de création CHOIX Afficher toutes les infos du personnage / modifier les infos
-            */
+                    if (!selectedHero) {
+                        Magician magician = new Magician(heroName);
+                        System.out.println("Magician name is :" + magician.getName());
+                    } else {
+                        Warrior warrior = new Warrior(heroName);
+                        System.out.println("Warrior name is :" + warrior.getName());
+                    }
 
-        } catch (Exception errorUserMenuInput) { //Exception generique - errorUserMenuInput est le nom que je lui donne ds ce contexte.
-            System.out.println("Erreur de saisie utilisateur dans le menu principal");
+                } catch (Exception errorSelectHeroMenuInput) {
+                    System.out.println("Error occur during the hero selection process!");
+                } finally {
+                    System.out.println("Creation of new player - Process ended!");
+                }
+            }
+
+        } catch (Exception errorUserMenuInput) {
+            System.out.println("Error occur in the main menu!");
         } finally {
             System.out.println("JAVA c'est plus fort que toi !");
         }

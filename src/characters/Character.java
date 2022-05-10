@@ -1,12 +1,21 @@
 package characters;
 
-public abstract class Character {  //ASK strange? make it abstract only require the key word abstract here i guess
+public abstract class Character {
     // attributes declarations
     private String name;
     private String picture; //TODO refactor to store a picture
     private int numberOfLife;
     private int attackLevel;
     //private boolean characterType; // True=Magician||Warrior False=Enemies/
+
+    // constructor
+    public Character(String name, String picture, int numberOfLife, int attackLevel) {
+        this.setName(name);
+        this.picture = picture;
+        this.numberOfLife = numberOfLife;
+        this.attackLevel = attackLevel;
+        //this.type = type;
+    }
 
     // getter and setter
     public String getName() {
@@ -41,16 +50,6 @@ public abstract class Character {  //ASK strange? make it abstract only require 
         this.attackLevel = newAttackLevel;
     }
 
-    // constructors
-    public Character(String name, String picture, int numberOfLife, int attackLevel) {
-        this.setName(name);
-        this.picture = picture;
-        this.numberOfLife = numberOfLife;
-        this.attackLevel = attackLevel;
-        //this.type = type;
-    }
-
-    // toString()
     @Override
     public String toString() {
         return this.getClass().getSimpleName() +

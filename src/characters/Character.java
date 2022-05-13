@@ -3,7 +3,7 @@ package characters;
 public abstract class Character {
     // attributes declarations
     private String name;
-    private String picture; //TODO refactor to store a picture
+    private String picture; // TODO +Tard => refactor to store a picture
     private int numberOfLife;
     private int attackLevel;
     //private boolean characterType; // True=Magician||Warrior False=Enemies/

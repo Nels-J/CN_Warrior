@@ -15,4 +15,10 @@ public class Dice implements DiceInterface {
         // System.out.println( "Dédé est de :" + dice );
         //return dice;
     }
+    @Override
+    public String toString() {
+        return "Dice{" +
+                "dice=" + dice +
+                '}';
+    }
 }

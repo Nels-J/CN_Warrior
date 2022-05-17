@@ -1,6 +1,6 @@
 package characters;
 
-public abstract class Character {
+public abstract class Sprite {
     // attributes declarations
     private String name;
     private String picture; // TODO +Tard => refactor to store a picture
@@ -9,7 +9,7 @@ public abstract class Character {
     //private boolean characterType; // True=Magician||Warrior False=Enemies/
 
     // constructor
-    public Character(String name, String picture, int numberOfLife, int attackLevel) {
+    public Sprite(String name, String picture, int numberOfLife, int attackLevel) {
         this.setName(name);
         this.picture = picture;
         this.numberOfLife = numberOfLife;

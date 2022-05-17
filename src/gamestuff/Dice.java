@@ -10,10 +10,10 @@ public class Dice implements DiceInterface {
 
     // Random method without using Random class
     public int launchDice() {
-        double launch = Math.random() * 6 + 1;
+        double launch = Math.random() * 4 + 1;
         return dice = (int) launch;
         // System.out.println( "Dédé est de :" + dice );
-        //return dice;
+        // return dice;
     }
     @Override
     public String toString() {

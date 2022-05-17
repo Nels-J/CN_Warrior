@@ -1,6 +1,6 @@
 package characters;
 
-public class Warrior extends Character {
+public class Warrior extends Sprite {
     public Warrior() {
         this("default warrior");
     }

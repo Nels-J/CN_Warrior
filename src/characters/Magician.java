@@ -1,6 +1,6 @@
 package characters;
 
-public class Magician extends Character {
+public class Magician extends Sprite {
 
     public Magician() {
         this("default wizard");
@@ -13,4 +13,5 @@ public class Magician extends Character {
     public Magician(String name, String picture, int numberOfLife, int attackLevel) {
         super(name, picture, numberOfLife, attackLevel);
     }
+
 }

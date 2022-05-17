@@ -1,22 +1,67 @@
 package gamestuff;
 
+import characters.Sprite;
+
 public class Game {
-    //ATTRIBUT(s)
+
+    //ATTRIBUTE(s)
+    private Menu menu;
     private GameMap gameMap;
-    private int playerPosition;
-    private Character character;
+    private Sprite sprite;
     private Dice dice;
+    private int playerPosition;
+
 
     // CONSTRUCTOR(s)
     public Game() {
+        this.menu = new Menu();
         this.gameMap = new GameMap();
-        this.playerPosition = 0;
+        this.sprite = null;
         this.dice = new Dice();
+        this.playerPosition = 0;
     }
 
+    public Game(Sprite sprite) {
+        this.menu = new Menu();
+        this.gameMap = new GameMap();
+        this.sprite = sprite;
+        this.dice = new Dice();
+        this.playerPosition = 0;
+    }
+
+
     // GETTER(s)/SETTER(s)
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
     public GameMap getGameMap() {
         return gameMap;
+    }
+
+    public void setGameMap(GameMap gameMap) {
+        this.gameMap = gameMap;
+    }
+
+    public Sprite getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+
+    public Dice getDice() {
+        return dice;
+    }
+
+    public void setDice(Dice dice) {
+        this.dice = dice;
     }
 
     public int getPlayerPosition() {
@@ -27,18 +72,26 @@ public class Game {
         this.playerPosition = playerPosition;
     }
 
-    public Dice getDice() {
-        return dice;
-    }
 
     // METHOD(s)
+
     public void init() {
         System.out.println("Game engine started");
-        Menu menu = new Menu();
-        menu.mainMenu();
+        sprite = menu.mainMenu();
+        start();
     }
 
-    public void beginGame() {
+    public void start() {
+        gameMap.turnTest(4);
+        System.out.println(gameMap);
+        newTurn();
+    }
 
+    public void newTurn() {
+        System.out.println("Actual position is: " + getPlayerPosition());
+        dice.launchDice();
+        System.out.println("Dice result: " + getDice().dice);
+        playerPosition += getDice().dice;
+        System.out.println("New position is: " + getPlayerPosition());
     }
 }

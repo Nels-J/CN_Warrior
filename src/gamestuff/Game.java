@@ -31,7 +31,6 @@ public class Game {
 
 
     // GETTER(s)/SETTER(s)
-
     public Menu getMenu() {
         return menu;
     }
@@ -74,24 +73,31 @@ public class Game {
 
 
     // METHOD(s)
-
     public void init() {
-        System.out.println("Game engine started");
         sprite = menu.mainMenu();
-        start();
+        //start(sprite);
     }
 
     public void start() {
-        gameMap.turnTest(4);
-        System.out.println(gameMap);
-        newTurn();
+        try {
+            gameMap.turnTest(64);
+            while (getPlayerPosition() < gameMap.getCells().size()) {
+                newTurn();
+                if (getPlayerPosition() >= gameMap.getCells().size()) {
+                    throw new CustomExceptions("Congratulations you win !");
+                } else {
+                    System.out.println("New position is: " + (getPlayerPosition() + 1));
+                }
+            }
+        } catch(CustomExceptions isWin){
+            System.out.println(isWin);
+        }
     }
 
-    public void newTurn() {
-        System.out.println("Actual position is: " + getPlayerPosition());
+    public void newTurn(){
+        System.out.println("Actual position is: " + (getPlayerPosition() + 1));
         dice.launchDice();
         System.out.println("Dice result: " + getDice().dice);
         playerPosition += getDice().dice;
-        System.out.println("New position is: " + getPlayerPosition());
     }
 }

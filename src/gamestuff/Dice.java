@@ -12,8 +12,7 @@ public class Dice implements DiceInterface {
     public int launchDice() {
         double launch = Math.random() * 4 + 1;
         return dice = (int) launch;
-        // System.out.println( "Dédé est de :" + dice );
-        // return dice;
+
     }
     @Override
     public String toString() {

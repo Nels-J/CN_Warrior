@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Menu {
 
     // ATTRIBUTE(s)
-    private boolean quitOrNew;
     private Scanner clavier;
     private boolean selectedHero;
     private String heroName;
@@ -25,14 +24,6 @@ public class Menu {
 
 
     // GETTER(s)/SETTER(s)
-
-    public boolean isQuitOrNew() {
-        return quitOrNew;
-    }
-
-    public void setQuitOrNew(boolean quitOrNew) {
-        this.quitOrNew = quitOrNew;
-    }
 
     public Scanner getClavier() {
         return clavier;
@@ -76,12 +67,12 @@ public class Menu {
 
 
     // METHOD(s)
-
     public Sprite mainMenu() {
         try {
             System.out.println(" (0) - Quit / (1) - New Player");
-            quitOrNew = clavier.nextInt() == 1;
-            if (quitOrNew) {
+            int result = clavier.nextInt();
+            System.out.println("check" + result);
+            if (result == 1) {
                 try {
                     System.out.println(" Select your new hero -> (0) - Magician / (1) - Warrior");
                     selectedHero = clavier.nextInt() == 1;
@@ -98,7 +89,6 @@ public class Menu {
                     }
                 } catch (Exception errorSelectHeroMenuInput) {
                     System.out.println("Error occur during the hero selection process, try again!");
-                    // TODO +tard => relancer peut être game.init ?
                 } finally {
                     System.out.println("Creation of new character - Process ended!");
                 }
@@ -112,13 +102,3 @@ public class Menu {
         return sprite;
     }
 }
-
-//    public void startMenu() {
-//            clavier = new Scanner(System.in);
-//            System.out.println("Ready to start? (0) - No / (1) - Yes");
-//            quitOrStart = clavier.nextInt() == 1;
-//            if(quitOrStart) {
-//                            }
-//            clavier.close();
-//
-//}

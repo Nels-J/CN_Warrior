@@ -11,12 +11,13 @@ public class GameMap {
 
     // CONSTRUCTOR(s)
     public GameMap() {
-        this.cells = new ArrayList<Integer>(64);
+        this.gameMapTotalCells = 4;
+        this.cells = new ArrayList<Integer>(gameMapTotalCells);
     }
 
     public GameMap(int gameMapTotalCells) {
         this.gameMapTotalCells = gameMapTotalCells;
-        this.cells = new ArrayList<>(gameMapTotalCells);
+        this.cells = new ArrayList<Integer>(gameMapTotalCells);
     }
 
     // GETTER(s) & SETTER(s)
@@ -53,9 +54,6 @@ public class GameMap {
     public void turnTest(int gameMapTotalCells) {
         for (int idx = 0; idx < gameMapTotalCells ; idx++) {
             getCells().add(idx,idx+1);
-            System.out.println(getCells().get(idx));
         }
     }
-
-    //TODO avancer le pion selon le résultat de Dédé
 }

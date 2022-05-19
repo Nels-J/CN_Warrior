@@ -69,23 +69,26 @@ public class Menu {
     // METHOD(s)
     public Sprite mainMenu() {
         try {
-            System.out.println(" (0) - Quit / (1) - New Player");
+            System.out.print(" (0) - Quit / (1) - New Player : " );
             int result = clavier.nextInt();
-            System.out.println("check" + result);
+            if (result ==0) {
+                throw new QuitException();
+            }
+
             if (result == 1) {
                 try {
-                    System.out.println(" Select your new hero -> (0) - Magician / (1) - Warrior");
+                    System.out.print(" Select your new hero -> (0) - Magician / (1) - Warrior :");
                     selectedHero = clavier.nextInt() == 1;
-                    System.out.println(" Your hero name please: ");
+                    System.out.print(" Your hero name please: ");
                     heroName = clavier.next();
                     clavier.close();
                     // TODO +Tard => Afficher toutes les infos du personnage OU modifier ses infos
                     if (!selectedHero) {
                         sprite = new Magician(heroName);
-                        System.out.println("Magician name is : " + sprite.getName());
+                        System.out.print("Magician name is : " + sprite.getName());
                     } else {
                         sprite = new Warrior(heroName);
-                        System.out.println("Warrior name is : " + sprite.getName());
+                        System.out.print("Warrior name is : " + sprite.getName());
                     }
                 } catch (Exception errorSelectHeroMenuInput) {
                     System.out.println("Error occur during the hero selection process, try again!");
@@ -93,10 +96,7 @@ public class Menu {
                     System.out.println("Creation of new character - Process ended!");
                 }
             }
-        } catch (Exception errorUserMenuInput) {
-            System.out.println("Error occur in the main menu!");
         } finally {
-            System.out.println("Creation of new player - Process ended!");
             clavier.close();
         }
         return sprite;

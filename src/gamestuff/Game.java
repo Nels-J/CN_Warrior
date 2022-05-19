@@ -75,10 +75,10 @@ public class Game {
     // METHOD(s)
     public void init() {
         sprite = menu.mainMenu();
-        //start(sprite);
+        start(sprite);
     }
 
-    public void start() {
+    public void start(Sprite sprite) {
         try {
             gameMap.turnTest(64);
             while (getPlayerPosition() < gameMap.getCells().size()) {
@@ -90,7 +90,7 @@ public class Game {
                 }
             }
         } catch(CustomExceptions isWin){
-            System.out.println(isWin);
+            isWin.printStackTrace();
         }
     }
 

@@ -68,36 +68,31 @@ public class Menu {
 
     // METHOD(s)
     public Sprite mainMenu() {
-        try {
-            System.out.print(" (0) - Quit / (1) - New Player : " );
-            int result = clavier.nextInt();
-            if (result ==0) {
-                throw new QuitException();
-            }
+        System.out.print(" (0) - Quit / (1) - New Player : " );
+        int result = clavier.nextInt();
+        if (result ==0) {
+            throw new QuitException();
+        }
 
-            if (result == 1) {
-                try {
-                    System.out.print(" Select your new hero -> (0) - Magician / (1) - Warrior :");
-                    selectedHero = clavier.nextInt() == 1;
-                    System.out.print(" Your hero name please: ");
-                    heroName = clavier.next();
-                    clavier.close();
-                    // TODO +Tard => Afficher toutes les infos du personnage OU modifier ses infos
-                    if (!selectedHero) {
-                        sprite = new Magician(heroName);
-                        System.out.print("Magician name is : " + sprite.getName());
-                    } else {
-                        sprite = new Warrior(heroName);
-                        System.out.print("Warrior name is : " + sprite.getName());
-                    }
-                } catch (Exception errorSelectHeroMenuInput) {
-                    System.out.println("Error occur during the hero selection process, try again!");
-                } finally {
-                    System.out.println("Creation of new character - Process ended!");
+        if (result == 1) {
+            try {
+                System.out.print(" Select your new hero -> (0) - Magician / (1) - Warrior :");
+                selectedHero = clavier.nextInt() == 1;
+                System.out.print(" Your hero name please: ");
+                heroName = clavier.next();
+                // TODO +Tard => Afficher toutes les infos du personnage OU modifier ses infos
+                if (!selectedHero) {
+                    sprite = new Magician(heroName);
+                    System.out.println("Magician name is : " + sprite.getName());
+                } else {
+                    sprite = new Warrior(heroName);
+                    System.out.println("Warrior name is : " + sprite.getName());
                 }
+            } catch (Exception errorSelectHeroMenuInput) {
+                System.out.println("Error occur during the hero selection process, try again!");
+            } finally {
+                System.out.println("Creation of new character - Process ended!");
             }
-        } finally {
-            clavier.close();
         }
         return sprite;
     }

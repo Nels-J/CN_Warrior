@@ -1,12 +1,12 @@
 package gamestuff;
 
-public class CustomExceptions extends Exception {
+public class WinException extends Exception {
     // ATTRIBUTE(s)
     String playerMessageToOutput;
 
 
     // CONSTRUCTOR(s)
-    public CustomExceptions(String playerMessageToOutput) {
+    public WinException(String playerMessageToOutput) {
         this.playerMessageToOutput = playerMessageToOutput;
     }
 

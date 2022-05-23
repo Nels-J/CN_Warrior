@@ -12,4 +12,5 @@ public class Warrior extends Sprite {
     public Warrior(String name, String picture, int numberOfLife, int attackLevel) {
         super(name, picture, numberOfLife, attackLevel);
     }
+
 }

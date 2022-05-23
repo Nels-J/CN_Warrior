@@ -1,6 +1,7 @@
 package gamestuff;
 
 import characters.Sprite;
+import surprise.Surprise;
 
 public class Game {
 
@@ -43,10 +44,6 @@ public class Game {
         return gameMap;
     }
 
-    public void setGameMap(GameMap gameMap) {
-        this.gameMap = gameMap;
-    }
-
     public Sprite getSprite() {
         return sprite;
     }
@@ -73,31 +70,29 @@ public class Game {
 
 
     // METHOD(s)
-    public void init() {
-        sprite = menu.mainMenu();
-        start(sprite);
+    public void init() throws WinException {
+        setSprite(sprite = menu.mainMenu());
+        start(getSprite());
     }
 
-    public void start(Sprite sprite) {
-        try {
-            gameMap.turnTest(64);
+    public void start(Sprite sprite) throws WinException{
             while (getPlayerPosition() < gameMap.getCells().size()) {
                 newTurn();
                 if (getPlayerPosition() >= gameMap.getCells().size()) {
-                    throw new CustomExceptions("Congratulations you win !");
+                    throw new WinException("Congratulations you win !");
                 } else {
                     System.out.println("New position is: " + (getPlayerPosition() + 1));
                 }
             }
-        } catch(CustomExceptions isWin){
-            isWin.printStackTrace();
-        }
     }
 
     public void newTurn(){
         System.out.println("Actual position is: " + (getPlayerPosition() + 1));
-        dice.launchDice();
-        System.out.println("Dice result: " + getDice().dice);
-        playerPosition += getDice().dice;
+        int i = dice.launchDice();
+        System.out.println("Dice result: " + i);
+        setPlayerPosition(playerPosition += i);
+
+        Surprise cell = gameMap.getCells().get(playerPosition);
+        cell.openSurprise(sprite);
     }
 }

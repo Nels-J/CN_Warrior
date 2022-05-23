@@ -14,7 +14,6 @@ public abstract class Sprite {
         this.picture = picture;
         this.numberOfLife = numberOfLife;
         this.attackLevel = attackLevel;
-        //this.type = type;
     }
 
     // getter and setter
@@ -52,10 +51,11 @@ public abstract class Sprite {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() +
-                " name='" + name + '\'' +
+        return "Sprite{" +
+                "name='" + name + '\'' +
                 ", picture='" + picture + '\'' +
                 ", numberOfLife=" + numberOfLife +
-                ", attackLevel=" + attackLevel;
+                ", attackLevel=" + attackLevel +
+                '}';
     }
 }

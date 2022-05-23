@@ -17,6 +17,7 @@ public class Dragon extends Sprite implements Surprise {
 
     @Override
     public void openSurprise(Sprite sprite) {
+
     }
 
 }

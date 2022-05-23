@@ -1,6 +1,8 @@
 package equipments;
 
+import characters.Magician;
 import characters.Sprite;
+import characters.Warrior;
 import surprise.Surprise;
 
 public class Potion implements Surprise {
@@ -28,6 +30,17 @@ public class Potion implements Surprise {
 
     @Override
     public void openSurprise(Sprite sprite) {
+        int newLife = sprite.getNumberOfLife() + 2;
+        if ((sprite instanceof Magician) && (newLife <= 6)){
+                sprite.setNumberOfLife(newLife);
+        } else{
+            sprite.setNumberOfLife(6);
+        }
+        if ((sprite instanceof Warrior) && (newLife <= 10)){
+            sprite.setNumberOfLife(newLife);
+        } else{
+            sprite.setNumberOfLife(10);
+        }
     }
 
     @Override

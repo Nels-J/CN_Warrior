@@ -12,7 +12,7 @@ public class Main {
             System.out.println("You decide to leave bye!");
             System.exit(0);
         } catch (Exception error) {
-            System.out.println("You get an troubleshooting:" + error.getMessage());
+            System.out.println("You get a troubleshooting: " + error.getMessage());
             System.exit(1);
         }
     }
@@ -23,7 +23,7 @@ public class Main {
             game.init();
             return GameStatus.LOOSE;
         } catch (WinException winException) {
-
+            System.out.println(winException.getMessage());
             return GameStatus.WIN;
         }
     }

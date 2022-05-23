@@ -75,24 +75,26 @@ public class Game {
         start(getSprite());
     }
 
-    public void start(Sprite sprite) throws WinException{
-            while (getPlayerPosition() < gameMap.getCells().size()) {
-                newTurn();
-                if (getPlayerPosition() >= gameMap.getCells().size()) {
-                    throw new WinException("Congratulations you win !");
-                } else {
-                    System.out.println("New position is: " + (getPlayerPosition() + 1));
-                }
-            }
+    public void start(Sprite sprite) throws WinException {
+        while (getPlayerPosition() < gameMap.getCells().size()) {
+            newTurn();
+        }
     }
 
-    public void newTurn(){
+    public void newTurn() throws WinException{
         System.out.println("Actual position is: " + (getPlayerPosition() + 1));
         int i = dice.launchDice();
         System.out.println("Dice result: " + i);
         setPlayerPosition(playerPosition += i);
-
+        if (getPlayerPosition() >= gameMap.getCells().size()) {
+            throw new WinException("Congratulations you win !");
+        }
         Surprise cell = gameMap.getCells().get(playerPosition);
-        cell.openSurprise(sprite);
+        if (cell != null) {
+            System.out.println("------- Open the surprise? -------");
+            cell.openSurprise(sprite);
+        } else {
+            System.out.println("------- No surprise here! -------");
+        }
     }
 }

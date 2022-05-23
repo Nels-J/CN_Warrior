@@ -76,7 +76,7 @@ public class Menu {
 
         if (result == 1) {
             try {
-                System.out.print(" Select your new hero -> (0) - Magician / (1) - Warrior :");
+                System.out.print(" Select your new hero -> (0) - Magician / (1) - Warrior : ");
                 selectedHero = clavier.nextInt() == 1;
                 System.out.print(" Your hero name please: ");
                 heroName = clavier.next();

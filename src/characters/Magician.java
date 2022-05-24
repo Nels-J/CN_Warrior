@@ -7,11 +7,11 @@ public class Magician extends Sprite {
     }
 
     public Magician(String name) {
-        this(name, "mag.png", 3, 8);
+        this(name, "mag.png", 3, 8,5,15);
     }
 
-    public Magician(String name, String picture, int numberOfLife, int attackLevel) {
-        super(name, picture, numberOfLife, attackLevel);
+    public Magician(String name, String picture, int numberOfLife, int attackLevel, int maxLife, int maxAttack) {
+        super(name, picture, numberOfLife, attackLevel, maxLife, maxAttack);
     }
 
 }

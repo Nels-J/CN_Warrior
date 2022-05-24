@@ -8,11 +8,11 @@ import surprise.Surprise;
  */
 public class Dragon extends Sprite implements Surprise {
     public Dragon() {
-        super("default Dragon", "drag.png", 15, 4);
+        super("default Dragon", "drag.png", 15, 4, 0,0);
     }
 
     public Dragon(String name) {
-        super(name, "drag.png", 15, 4);
+        super(name, "drag.png", 15, 4, 0,0);
     }
 
     @Override

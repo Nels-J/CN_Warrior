@@ -31,15 +31,16 @@ public class Potion implements Surprise {
     @Override
     public void openSurprise(Sprite sprite) {
         int newLife = sprite.getNumberOfLife() + 2;
-        if ((sprite instanceof Magician) && (newLife <= 6)){
-                sprite.setNumberOfLife(newLife);
-        } else{
-            sprite.setNumberOfLife(6);
-        }
-        if ((sprite instanceof Warrior) && (newLife <= 10)){
+
+        if ((sprite instanceof Magician) && (newLife <= 6)) {
             sprite.setNumberOfLife(newLife);
-        } else{
-            sprite.setNumberOfLife(10);
+            System.out.println("+++ You've got a POTION => 2 additional life added +++");
+        } else if ((sprite instanceof Warrior) && (newLife <= 10)) {
+            sprite.setNumberOfLife(newLife);
+            System.out.println("+++ You've got a POTION => 2 additional life added +++");
+        } else {
+            sprite.setNumberOfLife(sprite.getMaxLife());
+            System.out.println("+++ You've got a POTION => Life set to MAX Life +++");
         }
     }
 

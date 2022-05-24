@@ -87,14 +87,15 @@ public class Game {
         System.out.println("Dice result: " + i);
         setPlayerPosition(playerPosition += i);
         if (getPlayerPosition() >= gameMap.getCells().size()) {
-            throw new WinException("Congratulations you win !");
+            throw new WinException("!!!!!   Congratulations you WIN   !!!!!");
         }
         Surprise cell = gameMap.getCells().get(playerPosition);
         if (cell != null) {
-            System.out.println("------- Open the surprise? -------");
+            System.out.println("***** Opening surprise *****");
+            System.out.println("Life: " + getSprite().getNumberOfLife() + " and Strength : " + getSprite().getAttackLevel());
             cell.openSurprise(sprite);
         } else {
-            System.out.println("------- No surprise here! -------");
+            System.out.println("***** Nothing here... *****");
         }
     }
 }

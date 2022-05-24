@@ -1,36 +1,33 @@
 package characters;
 
 public abstract class Sprite {
-    // attributes declarations
+
+    // ATTRIBUTE(s)
     private String name;
     private String picture; // TODO +Tard => refactor to store a picture
     private int numberOfLife;
     private int attackLevel;
-    //private boolean characterType; // True=Magician||Warrior False=Enemies/
+    private int maxLife;
+    private int maxAttack;
 
-    // constructor
-    public Sprite(String name, String picture, int numberOfLife, int attackLevel) {
+
+    // CONSTRUCTOR(s)
+    public Sprite(String name, String picture, int numberOfLife, int attackLevel, int maxLife, int maxAttack) {
         this.setName(name);
         this.picture = picture;
         this.numberOfLife = numberOfLife;
         this.attackLevel = attackLevel;
+        this.maxLife = maxLife;
+        this.maxAttack = maxAttack;
     }
 
-    // getter and setter
+    // GETTER(s) & SETTER(s)
     public String getName() {
         return name;
     }
 
     public void setName(String newName) {
         this.name = newName;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String newPicture) {
-        this.picture = newPicture;
     }
 
     public int getNumberOfLife() {
@@ -49,6 +46,14 @@ public abstract class Sprite {
         this.attackLevel = newAttackLevel;
     }
 
+    public int getMaxLife() {
+        return maxLife;
+    }
+
+    public int getMaxAttack() {
+        return maxAttack;
+    }
+
     @Override
     public String toString() {
         return "Sprite{" +
@@ -56,6 +61,8 @@ public abstract class Sprite {
                 ", picture='" + picture + '\'' +
                 ", numberOfLife=" + numberOfLife +
                 ", attackLevel=" + attackLevel +
+                ", maxLife=" + maxLife +
+                ", maxAttack=" + maxAttack +
                 '}';
     }
 }

@@ -32,17 +32,6 @@ public class Game {
 
 
     // GETTER(s)/SETTER(s)
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public GameMap getGameMap() {
-        return gameMap;
-    }
 
     public Sprite getSprite() {
         return sprite;
@@ -50,14 +39,6 @@ public class Game {
 
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
-    }
-
-    public Dice getDice() {
-        return dice;
-    }
-
-    public void setDice(Dice dice) {
-        this.dice = dice;
     }
 
     public int getPlayerPosition() {
@@ -70,32 +51,35 @@ public class Game {
 
 
     // METHOD(s)
-    public void init() throws WinException {
+    public void init() throws WinException, LooseException {
         setSprite(sprite = menu.mainMenu());
         start(getSprite());
     }
 
-    public void start(Sprite sprite) throws WinException {
+    public void start(Sprite sprite) throws WinException, LooseException {
         while (getPlayerPosition() < gameMap.getCells().size()) {
             newTurn();
         }
     }
 
-    public void newTurn() throws WinException{
-        System.out.println("Actual position is: " + (getPlayerPosition() + 1));
+    public void newTurn() throws WinException, LooseException {
+        System.out.println("\nActual position is: " + (getPlayerPosition() + 1));
         int i = dice.launchDice();
         System.out.println("Dice result: " + i);
         setPlayerPosition(playerPosition += i);
         if (getPlayerPosition() >= gameMap.getCells().size()) {
-            throw new WinException("!!!!!   Congratulations you WIN   !!!!!");
+            throw new WinException("!!!!!   Congratulations you WIN   !!!!!\n");
         }
         Surprise cell = gameMap.getCells().get(playerPosition);
         if (cell != null) {
+            System.out.println("** Life: " + getSprite().getNumberOfLife() + " and Strength : " + getSprite().getAttackLevel() + " **");
             System.out.println("***** Opening surprise *****");
-            System.out.println("Life: " + getSprite().getNumberOfLife() + " and Strength : " + getSprite().getAttackLevel());
             cell.openSurprise(sprite);
+            if (getSprite().getNumberOfLife() < 1) {
+                throw new LooseException("LOOSER - GAME OVER!!!!\n");
+            }
         } else {
-            System.out.println("***** Nothing here... *****");
+            System.out.println("***** Nothing here... *****\n");
         }
     }
 }

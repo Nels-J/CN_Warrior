@@ -22,6 +22,9 @@ public class Main {
             Game game = new Game();
             game.init();
             return GameStatus.LOOSE;
+        } catch (LooseException looseException) {
+            System.out.println(looseException.getMessage());
+            return GameStatus.LOOSE;
         } catch (WinException winException) {
             System.out.println(winException.getMessage());
             return GameStatus.WIN;

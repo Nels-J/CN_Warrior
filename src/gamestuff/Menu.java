@@ -91,7 +91,7 @@ public class Menu {
             } catch (Exception errorSelectHeroMenuInput) {
                 System.out.println("Error occur during the hero selection process, try again!");
             } finally {
-                System.out.println("Creation of new character - Process ended!");
+                System.out.println("Creation of new character - Process ended!\n\n");
             }
         }
         return sprite;

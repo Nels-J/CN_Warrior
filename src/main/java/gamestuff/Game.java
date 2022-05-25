@@ -1,35 +1,28 @@
 package gamestuff;
 
 import characters.Sprite;
+import database.DbConnection;
 import surprise.Surprise;
 
 public class Game {
-
     //ATTRIBUTE(s)
     private Menu menu;
     private GameMap gameMap;
     private Sprite sprite;
     private Dice dice;
     private int playerPosition;
+    private DbConnection myConnexion;
 
 
     // CONSTRUCTOR(s)
     public Game() {
+        this.myConnexion = new DbConnection();
         this.menu = new Menu();
         this.gameMap = new GameMap();
         this.sprite = null;
         this.dice = new Dice();
         this.playerPosition = 0;
     }
-
-    public Game(Sprite sprite) {
-        this.menu = new Menu();
-        this.gameMap = new GameMap();
-        this.sprite = sprite;
-        this.dice = new Dice();
-        this.playerPosition = 0;
-    }
-
 
     // GETTER(s)/SETTER(s)
 
@@ -52,11 +45,8 @@ public class Game {
 
     // METHOD(s)
     public void init() throws WinException, LooseException {
+        myConnexion.loadDatabase();
         setSprite(sprite = menu.mainMenu());
-        start(getSprite());
-    }
-
-    public void start(Sprite sprite) throws WinException, LooseException {
         while (getPlayerPosition() < gameMap.getCells().size()) {
             newTurn();
         }

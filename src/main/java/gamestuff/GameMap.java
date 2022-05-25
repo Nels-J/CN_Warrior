@@ -8,6 +8,7 @@ import equipments.Spell;
 import equipments.Sword;
 import surprise.Surprise;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class GameMap {
     public GameMap() {
         this.gameMapTotalCells = 64;
         this.cells = Arrays.asList(new Surprise[64]);
+//        this.cells = new ArrayList<>(64); // Arrays.asList(new Surprise[64]);
         generate();
     }
 

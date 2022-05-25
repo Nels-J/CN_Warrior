@@ -1,9 +1,16 @@
+import database.DbConnection;
 import gamestuff.*;
 
 // Game engine (Main)
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to the game!");
+
+//        DbConnection myConnexion = new DbConnection();
+//        myConnexion.loadDatabase();
+
+
+
         try {
             while (true) {
                 playGame();
@@ -27,7 +34,8 @@ public class Main {
             return GameStatus.LOOSE;
         } catch (WinException winException) {
             System.out.println(winException.getMessage());
+
             return GameStatus.WIN;
         }
-    }
+   }
 }

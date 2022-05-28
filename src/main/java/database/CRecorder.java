@@ -5,21 +5,21 @@ package database;
  * @Date 25/05/2022
  */
 
-public class CRecorder extends CRecorder {
+//public class CRecorder extends CRecorder {
 
-    // ATTRIBUT(s)
+    // ATTRIBUTE(s)
 
 
     // CONSTRUCTOR(s)
 
-    public CRecorder(){
+    //public CRecorder(){
 
-    }
+    //}
 
-    public void savePlayer (DbConnection currentConnection, String heroName, String heroType){
-        currentConnection = new DbConnection();
+   // public void savePlayer (DbConnection currentConnection, String heroName, String heroType){
+       // currentConnection = new DbConnection();
         // insert into hero_table heroName
 
-    }
+    //}
 
-}
+//}

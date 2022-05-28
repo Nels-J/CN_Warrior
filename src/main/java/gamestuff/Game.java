@@ -1,7 +1,7 @@
 package gamestuff;
 
 import characters.Sprite;
-import database.DbConnection;
+import database.Database;
 import surprise.Surprise;
 
 public class Game {
@@ -11,12 +11,12 @@ public class Game {
     private Sprite sprite;
     private Dice dice;
     private int playerPosition;
-    private DbConnection myConnexion;
+    private Database myConnexion;
 
 
     // CONSTRUCTOR(s)
     public Game() {
-        this.myConnexion = new DbConnection();
+        this.myConnexion = new Database();
         this.menu = new Menu();
         this.gameMap = new GameMap();
         this.sprite = null;
@@ -45,7 +45,7 @@ public class Game {
 
     // METHOD(s)
     public void init() throws WinException, LooseException {
-        myConnexion.loadDatabase();
+        //myConnexion.loadDatabase();
         setSprite(sprite = menu.mainMenu());
         while (getPlayerPosition() < gameMap.getCells().size()) {
             newTurn();

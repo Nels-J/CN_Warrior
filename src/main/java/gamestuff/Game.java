@@ -45,7 +45,8 @@ public class Game {
 
     // METHOD(s)
     public void init() throws WinException, LooseException {
-        //myConnexion.loadDatabase();
+        System.out.println("Here after our latest heroes...");
+        myConnexion.loadDatabase();
         setSprite(sprite = menu.mainMenu());
         while (getPlayerPosition() < gameMap.getCells().size()) {
             newTurn();

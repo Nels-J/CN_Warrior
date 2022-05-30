@@ -14,7 +14,7 @@ public class Database {
     // GETTER(s) & SETTER(s)
 
     // METHOD(s)
-    /*
+
     public void loadDatabase() {
 
         try {
@@ -22,7 +22,7 @@ public class Database {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // 1 get connection to db
-            Connection dbConnexion = DriverManager.getConnection(url , user, pwd); //FIXME how to use dotenv
+            Connection dbConnexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/dndDB" , "nelsj", "Ayrton13!"); //FIXME how to use dotenv
 
             // 2 create a statement
             Statement myStatement = dbConnexion.createStatement();
@@ -41,10 +41,8 @@ public class Database {
             System.out.println("DB loading finish");
         }
     }
-    */
 
 
-    /*
     public void insertIntoDatabase(String newHeroName,String newHeroType) {
 
         try {
@@ -52,17 +50,18 @@ public class Database {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // 1 get connection to db
-            Connection dbConnexion = DriverManager.getConnection(url, user, pwd);
+            Connection dbConnexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/dndDB" , "nelsj", "Ayrton13!");
 
             // 2 create a statement
             Statement myStatement = dbConnexion.createStatement();
 
             // 3 execute sql query
-            String insertSqlQuery = "insert into hero_table "
-                    + " (hero_name, hero_type, hero_life, hero_strength) "
-                    + " values ('newHeroName','newHeroType','3','8') ";
+            //prepare
+            PreparedStatement preparedStatement = dbConnexion.prepareStatement("INSERT INTO hero_table(hero_name, hero_type, hero_life, hero_strength) VALUES (?,?,3,8);");
+            preparedStatement.setString(1, newHeroName);
+            preparedStatement.setString(2, newHeroType);
 
-            myStatement.executeUpdate(insertSqlQuery);
+            preparedStatement.executeUpdate();
 
             System.out.println("Insert complete");
 
@@ -73,7 +72,7 @@ public class Database {
         }
 
     }
-*/
+
     //TODO update db to do later
 
     @Override

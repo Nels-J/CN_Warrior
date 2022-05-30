@@ -3,7 +3,6 @@ package gamestuff;
 import characters.Sprite;
 import characters.Magician;
 import characters.Warrior;
-
 import java.util.Scanner;
 
 public class Menu {
@@ -68,9 +67,9 @@ public class Menu {
 
     // METHOD(s)
     public Sprite mainMenu() {
-        System.out.print(" (0) - Quit / (1) - New Player : " );
+        System.out.print(" (0) - Quit / (1) - New Player / (2) - Save your Hero: " );
         int result = clavier.nextInt();
-        if (result ==0) {
+        if (result == 0) {
             throw new QuitException();
         }
 
@@ -92,6 +91,15 @@ public class Menu {
                 System.out.println("Error occur during the hero selection process, try again!");
             } finally {
                 System.out.println("Creation of new character - Process ended!\n\n");
+            }
+        }
+        if ( result == 2){
+            try {
+               // myConnexion.insertIntoDatabase(sprite.getName(), sprite.getClass().getSimpleName());
+            }catch (Exception errorSavingHero){
+                System.out.println("Error occur during saving hero on db, try again!");
+            }finally {
+                System.out.println("Saving process ended!\n\n");
             }
         }
         return sprite;

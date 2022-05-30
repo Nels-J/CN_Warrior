@@ -1,17 +1,15 @@
 import database.Database;
+import gamestuff.*;
 
 // Game engine (Main)
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to the game!");
 
-/*
-        Database myConnexion = new Database();
-        myConnexion.loadDatabase();
-        myConnexion.insertIntoDatabase("Maverick", "Warrior");
-        myConnexion.loadDatabase();
-*/
-/*
+//        Database myConnexion = new Database();
+//        System.out.println("Here after our latest heroes...");
+//        myConnexion.loadDatabase();
+
         try {
             while (true) {
                 playGame();
@@ -39,6 +37,5 @@ public class Main {
             return GameStatus.WIN;
         }
 
-  */
     }
 }
